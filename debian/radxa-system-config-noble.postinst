@@ -3,6 +3,12 @@ set -e
 
 case $1 in
     configure|triggered)
+        conflicts="/etc/xdg/kcm-about-distrorc"
+        for i in $conflicts
+        do
+            dpkg-divert --package radxa-system-config-noble --divert "$i.bak" --rename "$i"
+        done
+
         if [ -e /usr/share/kubuntu-default-settings/kf5-settings/kdeglobals ]
         then
             sed -i "s/BrowserApplication=firefox_firefox.desktop/BrowserApplication=firefox-esr.desktop/" \
