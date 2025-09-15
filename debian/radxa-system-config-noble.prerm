@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
+    if [ -e /usr/share/kubuntu-default-settings/kf5-settings/kdeglobals ]; then
+        sed -i "s/BrowserApplication=firefox-esr.desktop/BrowserApplication=firefox_firefox.desktop/" \
+            /usr/share/kubuntu-default-settings/kf5-settings/kdeglobals
+    fi
+fi
+
+#DEBHELPER#
+
+exit 0
