@@ -6,7 +6,7 @@ case $1 in
         conflicts="/etc/xdg/kcm-about-distrorc"
         for i in $conflicts
         do
-            dpkg-divert --package radxa-desktop-branding --divert "$i.bak" --rename "$i"
+            dpkg-divert --package radxa-system-config-noble --divert "$i.bak" --rename "$i"
         done
         ;;
 esac
